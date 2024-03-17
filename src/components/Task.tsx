@@ -14,12 +14,11 @@ const Task:React.FC<Props> = React.memo({title, done, id, isLoading}) => {
     const dispatch = useAppDispatch();
 
     const onRemove = async () => {
-        if(window.confirm('Do you really want to delete?')) {
+        if (window.confirm('Do you really want to delete?')) {
             await dispatch(removeTask(id));
             await dispatch(fetchTasks());
         }
-    }Созданы соответствующие reducers.
-
+    }
     const onCheckboxChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const done = e.target.checked;
         await dispatch(editTask({taskId: id, apiTask: {title, done}}));
